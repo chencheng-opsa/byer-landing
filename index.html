@@ -20,7 +20,7 @@
         --ink: #f1ecea;
         --ink-dim: #a5a3b0;
         --line: rgba(255, 255, 255, 0.07);
-        --accent: #7c5cff;
+        --accent: #3b82f6;
         --tg: #229ED9;            /* telegram blue */
       }
       * { -webkit-font-smoothing: antialiased; }
@@ -35,19 +35,19 @@
         border-radius: 20px;
       }
       .btn-primary {
-        background: #6a48f5;
-        box-shadow: 0 10px 40px -16px rgba(124, 92, 255, 0.6);
+        background: #2563eb;
+        box-shadow: 0 10px 40px -16px rgba(59, 130, 246, 0.6);
         transition: transform .08s ease, background .12s ease;
       }
-      .btn-primary:hover { transform: translateY(-1px); background: #7c5cff; }
+      .btn-primary:hover { transform: translateY(-1px); background: #3b82f6; }
       .btn-ghost { background: rgba(255,255,255,0.04); border: 1px solid var(--line); }
       .btn-ghost:hover { background: rgba(255,255,255,0.08); }
       .tag {
         display: inline-flex; align-items: center; gap: 7px;
         padding: 7px 14px; border-radius: 999px;
-        background: rgba(124, 92, 255, 0.10);
-        border: 1px solid rgba(124, 92, 255, 0.28);
-        color: #d4d0ff; font-size: 11.5px; font-weight: 500;
+        background: rgba(59, 130, 246, 0.10);
+        border: 1px solid rgba(59, 130, 246, 0.28);
+        color: #bfdbfe; font-size: 11.5px; font-weight: 500;
         letter-spacing: 0.16em; text-transform: uppercase;
       }
       .dot { width: 6px; height: 6px; border-radius: 999px; background: var(--accent); }
@@ -59,7 +59,7 @@
         padding: 12px 14px; color: var(--ink); font-size: 14px;
         transition: border-color .15s ease, background .15s ease;
       }
-      .input:focus, .select:focus, .textarea:focus { outline: none; border-color: rgba(124,92,255,0.6); background: rgba(124,92,255,0.06); }
+      .input:focus, .select:focus, .textarea:focus { outline: none; border-color: rgba(59,130,246,0.6); background: rgba(59,130,246,0.06); }
       .input::placeholder, .textarea::placeholder { color: #6b6b7d; }
 
       /* Honeypot — hidden from humans, visible to naive bots */
@@ -83,7 +83,7 @@
       }
       .chat-avatar {
         width: 34px; height: 34px; border-radius: 10px;
-        background: #6a48f5;
+        background: #2563eb;
         display: inline-flex; align-items: center; justify-content: center;
         color: #fff; font-weight: 600;
       }
@@ -95,8 +95,8 @@
         line-height: 1.5;
       }
       .bubble.bot {
-        background: rgba(124, 92, 255, 0.10);
-        border: 1px solid rgba(124, 92, 255, 0.22);
+        background: rgba(59, 130, 246, 0.10);
+        border: 1px solid rgba(59, 130, 246, 0.22);
         color: #eaeaf2;
         border-top-left-radius: 4px;
       }
@@ -127,7 +127,7 @@
       }
       .chat-mini .mini-avatar {
         width: 30px; height: 30px; border-radius: 9px;
-        background: #6a48f5;
+        background: #2563eb;
         display: inline-flex; align-items: center; justify-content: center;
         color: #fff; font-size: 12px; font-weight: 600;
         flex-shrink: 0;
@@ -148,8 +148,8 @@
       }
       .typing {
         display: inline-flex; gap: 3px; padding: 10px 12px;
-        background: rgba(124, 92, 255, 0.08);
-        border: 1px solid rgba(124, 92, 255, 0.18);
+        background: rgba(59, 130, 246, 0.08);
+        border: 1px solid rgba(59, 130, 246, 0.18);
         border-radius: 14px; border-top-left-radius: 4px;
       }
       .typing span {
@@ -190,7 +190,7 @@
         background: #09090f;
         border: 1px solid var(--line);
         border-radius: 22px;
-        box-shadow: 0 40px 80px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(124,92,255,0.08);
+        box-shadow: 0 40px 80px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(59,130,246,0.08);
         transform: translateY(12px) scale(0.98);
         transition: transform .22s ease;
         max-height: calc(100vh - 40px);
@@ -220,7 +220,7 @@
         font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase;
         color: rgba(255,255,255,0.5); margin-bottom: 14px;
       }
-      .modal-title { font-size: 42px; line-height: 1; }
+      .modal-title { font-size: 30px; line-height: 1.1; font-weight: 600; letter-spacing: -0.015em; }
       .modal-sub { font-size: 14px; color: rgba(255,255,255,0.6); margin-top: 12px; max-width: 420px; line-height: 1.55; }
       .modal-body { padding: 22px 28px 28px; overflow-y: auto; }
       .option-list { display: flex; flex-direction: column; gap: 10px; }
@@ -237,20 +237,20 @@
       }
       .option:hover { background: rgba(255,255,255,0.045); border-color: rgba(255,255,255,0.14); }
       .option.selected {
-        background: rgba(124, 92, 255, 0.10);
-        border-color: rgba(124, 92, 255, 0.50);
-        box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.08);
+        background: rgba(59, 130, 246, 0.10);
+        border-color: rgba(59, 130, 246, 0.50);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.08);
       }
       .option-icon {
         width: 42px; height: 42px; border-radius: 11px;
-        background: rgba(124,92,255,0.10);
+        background: rgba(59,130,246,0.10);
         display: inline-flex; align-items: center; justify-content: center;
-        flex-shrink: 0; color: #c9c6ff;
+        flex-shrink: 0; color: #93c5fd;
       }
       .option.selected .option-icon {
         color: #fff;
-        background: #6a48f5;
-        box-shadow: 0 6px 18px -6px rgba(124,92,255,0.6);
+        background: #2563eb;
+        box-shadow: 0 6px 18px -6px rgba(59,130,246,0.6);
       }
       .option-title { font-size: 14.5px; font-weight: 600; color: var(--ink); }
       .option-sub { font-size: 12.5px; color: rgba(255,255,255,0.55); margin-top: 2px; }
@@ -263,11 +263,8 @@
   <body class="min-h-screen">
     <!-- NAV -->
     <nav class="max-w-6xl mx-auto px-6 md:px-8 py-6 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-2">
-        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg" style="background: #6a48f5;">
-          <span class="mono font-semibold text-sm text-white">b</span>
-        </span>
-        <span class="font-semibold tracking-tight">byer<span style="color:var(--accent)">.</span>ai</span>
+      <a href="#" class="flex items-center">
+        <img src="/byer-logo.png" alt="Byer.ai" class="h-8 md:h-9 w-auto" />
       </a>
       <div class="flex items-center gap-3">
         <a href="#how" class="hidden md:inline text-sm text-white/70 hover:text-white">How it works</a>
@@ -286,10 +283,11 @@
           <p class="text-white/70 max-w-2xl text-base md:text-lg leading-relaxed">
             Byer is a private, invite-only channel with exclusive pricing from distributors we source directly. Get in and you'll see deals that don't exist on broker chains, supplier broadcasts, or anywhere else. Current cohort is filling — limited spots.
           </p>
-          <div class="flex items-center gap-3 mt-2">
+          <div class="flex flex-col items-center gap-3 mt-1">
+            <span class="tag mono">Waitlist closing May 1</span>
             <a href="#" data-open-modal class="btn-primary text-sm md:text-base font-medium text-white rounded-full px-6 py-3">Join waitlist →</a>
+            <p class="text-xs text-white/45 mono">Invite-only · Telegram</p>
           </div>
-          <p class="text-xs text-white/45 mono mt-1">Invite-only · Limited spots · Telegram</p>
         </div>
       </div>
     </section>
@@ -398,7 +396,7 @@
         </details>
         <details class="card p-6">
           <summary class="flex items-center justify-between font-medium"><span>Where do the deals come from, and which categories are live?</span><span class="chev text-white/40">+</span></summary>
-          <p class="text-sm text-white/65 mt-3 leading-relaxed">Distributors we source and vet directly. Beauty, fragrance, and personal care are live first. New distributors onboarded weekly. Want another category? Mention it on the waitlist and we'll ping you when it opens.</p>
+          <p class="text-sm text-white/65 mt-3 leading-relaxed">Distributors we source and vet directly, across consumer goods — apparel, footwear, beauty, fragrance, and electronics. New distributors onboarded weekly. Want a category we don't list yet? Mention it on the waitlist and we'll ping you when it opens.</p>
         </details>
         <details class="card p-6">
           <summary class="flex items-center justify-between font-medium"><span>How do I get deals and negotiate?</span><span class="chev text-white/40">+</span></summary>
@@ -409,21 +407,16 @@
           <p class="text-sm text-white/65 mt-3 leading-relaxed">Because "exclusive" stops being exclusive the moment anyone can join. Distributors give us real pricing on the condition that the channel stays private. We keep the cohort small so the deals stay special.</p>
         </details>
         <details class="card p-6">
-          <summary class="flex items-center justify-between font-medium"><span>Is my data private?</span><span class="chev text-white/40">+</span></summary>
-          <p class="text-sm text-white/65 mt-3 leading-relaxed">Your profile is never shared with other members. Suppliers see anonymized demand only — until you submit an offer.</p>
-        </details>
-        <details class="card p-6">
           <summary class="flex items-center justify-between font-medium"><span>I'm a supplier — how do I join?</span><span class="chev text-white/40">+</span></summary>
-          <p class="text-sm text-white/65 mt-3 leading-relaxed">Suppliers join by invitation at category launch. If you carry beauty, fragrance, or personal care, email <a class="text-white underline" href="mailto:sales@byer.ai">sales@byer.ai</a>.</p>
+          <p class="text-sm text-white/65 mt-3 leading-relaxed">Suppliers join by invitation at category launch. If you carry consumer goods — apparel, footwear, beauty, fragrance, or electronics — email <a class="text-white underline" href="mailto:sales@byer.ai">sales@byer.ai</a>.</p>
         </details>
       </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="max-w-6xl mx-auto px-6 md:px-8 py-12 flex flex-col md:flex-row items-center justify-between gap-5 text-sm text-white/50" style="border-top: 1px solid var(--line);">
-      <div class="flex items-center gap-2">
-        <span class="inline-flex items-center justify-center w-6 h-6 rounded-md" style="background: #6a48f5;"><span class="mono font-semibold text-[11px] text-white">b</span></span>
-        <span class="mono">byer.ai</span>
+      <div class="flex items-center">
+        <img src="/byer-logo.png" alt="Byer.ai" class="h-6 w-auto opacity-80" />
       </div>
       <div class="flex items-center gap-5 flex-wrap justify-center">
         <a href="#" data-open-modal class="hover:text-white">Join waitlist</a>
@@ -444,20 +437,20 @@
 
         <div class="modal-top">
           <div class="modal-eyebrow">invite-only · limited spots</div>
-          <div id="modal-title" class="modal-title serif">Join the waitlist</div>
+          <div id="modal-title" class="modal-title">Join the waitlist</div>
           <p class="modal-sub">Byer is invite-only. The current cohort is filling — tell us about your book and we'll reach out if there's a match.</p>
         </div>
 
         <div class="modal-body">
           <form id="byer-form" novalidate>
-            <div class="option-list" role="radiogroup" aria-label="Choose how to connect">
-              <button type="button" class="option selected" role="radio" aria-checked="true" data-option="waitlist">
+            <div class="option-list" role="radiogroup" aria-label="How should we reach you?">
+              <button type="button" class="option selected" role="radio" aria-checked="true" data-option="phone">
                 <span class="option-icon" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 </span>
                 <span class="flex-1">
-                  <span class="option-title block">Join waitlist</span>
-                  <span class="option-sub block">Drop your email and we'll reach out</span>
+                  <span class="option-title block">Phone number</span>
+                  <span class="option-sub block">Recommended — we'll DM you on Telegram</span>
                 </span>
               </button>
 
@@ -466,24 +459,26 @@
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 7 9-7"/></svg>
                 </span>
                 <span class="flex-1">
-                  <span class="option-title block">Send an email</span>
-                  <span class="option-sub block">Write to sales@byer.ai directly</span>
+                  <span class="option-title block">Email instead</span>
+                  <span class="option-sub block">Prefer not to share a number? Use email</span>
                 </span>
               </button>
             </div>
 
             <!-- Dynamic panels -->
             <div class="mt-5">
-              <!-- Waitlist panel -->
-              <div class="option-panel" data-panel="waitlist">
+              <!-- Phone panel -->
+              <div class="option-panel" data-panel="phone">
                 <label for="byer-phone" class="field-label">Phone number</label>
-                <input id="byer-phone" class="input w-full" type="tel" name="phone" placeholder="+1 555 555 5555" autocomplete="tel" inputmode="tel" required />
+                <input id="byer-phone" class="input w-full" type="tel" name="phone" placeholder="+1 555 555 5555" autocomplete="tel" inputmode="tel" />
                 <p class="text-[11px] text-white/40 mt-2">We'll DM you on Telegram if your book is a fit. No spam.</p>
               </div>
 
               <!-- Email panel -->
               <div class="option-panel hidden" data-panel="email">
-                <p class="text-sm text-white/70 leading-relaxed">We'll open your mail client with a fresh draft to <span class="mono text-white/90">sales@byer.ai</span>. Tell us about your book and we'll reply within a day.</p>
+                <label for="byer-email" class="field-label">Email</label>
+                <input id="byer-email" class="input w-full" type="email" name="email" placeholder="you@company.com" autocomplete="email" />
+                <p class="text-[11px] text-white/40 mt-2">We'll reach out by email if your book is a fit. No spam.</p>
               </div>
             </div>
 
@@ -493,7 +488,7 @@
             </div>
 
             <button id="submit-btn" type="submit" class="btn-primary text-white font-medium rounded-lg px-5 py-3 w-full mt-5">
-              <span id="submit-label">Continue</span>
+              <span id="submit-label">Join the waitlist</span>
             </button>
             <p id="form-msg" class="text-sm text-white/60 min-h-[20px] mt-3"></p>
           </form>
@@ -543,8 +538,7 @@
           o.setAttribute('aria-checked', active ? 'true' : 'false');
         });
         panels.forEach(p => p.classList.toggle('hidden', p.dataset.panel !== value));
-        if (value === 'waitlist')   submitLabel.textContent = 'Join the waitlist';
-        else if (value === 'email') submitLabel.textContent = 'Open email';
+        submitLabel.textContent = 'Join the waitlist';
       }
       options.forEach(o => o.addEventListener('click', () => selectOption(o.dataset.option)));
 
@@ -555,7 +549,7 @@
 
       function getSelected() {
         const el = modal.querySelector('.option.selected');
-        return el ? el.dataset.option : 'waitlist';
+        return el ? el.dataset.option : 'phone';
       }
 
       form.addEventListener('submit', async (e) => {
@@ -563,36 +557,34 @@
         msg.textContent = '';
         msg.style.color = '';
         const selected = getSelected();
-
-        // Route: email
-        if (selected === 'email') {
-          const subject = encodeURIComponent("Byer — interested");
-          const body    = encodeURIComponent("Hi Byer team,\n\nA bit about what I source:\n\n");
-          window.location.href = `mailto:${SALES_EMAIL}?subject=${subject}&body=${body}`;
-          msg.textContent = '✓ Drafting your email…';
-          msg.style.color = '#a5eeff';
-          setTimeout(closeModal, 1200);
-          return;
-        }
-
-        // Route: waitlist (Formspree)
         const data = Object.fromEntries(new FormData(form).entries());
-        const phoneRaw = (data.phone || '').trim();
-        const phoneDigits = phoneRaw.replace(/\D/g, '');
-        if (phoneDigits.length < 7 || phoneDigits.length > 15) {
-          msg.textContent = 'Enter a valid phone number so we can reach you.';
-          msg.style.color = '#ffb4b4'; return;
-        }
+
         if (data._gotcha) {
-          msg.textContent = '✓ Got it.'; msg.style.color = '#a5eeff'; form.reset(); selectOption('waitlist'); return;
+          msg.textContent = '✓ Got it.'; msg.style.color = '#a5eeff'; form.reset(); selectOption('phone'); return;
         }
 
-        const payload = { phone: phoneRaw, source: 'waitlist', _subject: 'New byer.ai waitlist signup' };
+        let payload;
+        if (selected === 'phone') {
+          const phoneRaw = (data.phone || '').trim();
+          const phoneDigits = phoneRaw.replace(/\D/g, '');
+          if (phoneDigits.length < 7 || phoneDigits.length > 15) {
+            msg.textContent = 'Enter a valid phone number so we can reach you.';
+            msg.style.color = '#ffb4b4'; return;
+          }
+          payload = { phone: phoneRaw, contact_method: 'phone', _subject: 'New byer.ai waitlist signup (phone)' };
+        } else {
+          const email = (data.email || '').trim();
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            msg.textContent = 'Enter a valid email so we can reach you.';
+            msg.style.color = '#ffb4b4'; return;
+          }
+          payload = { email, contact_method: 'email', _subject: 'New byer.ai waitlist signup (email)' };
+        }
 
         if (FORMSPREE_ENDPOINT === "FORMSPREE_ENDPOINT_URL") {
           console.log('[byer.ai] Submission (Formspree endpoint not configured):', payload);
           msg.textContent = '✓ Received locally (endpoint not configured). Check console.';
-          msg.style.color = '#a5eeff'; form.reset(); selectOption('waitlist'); return;
+          msg.style.color = '#a5eeff'; form.reset(); selectOption('phone'); return;
         }
 
         btn.disabled = true;
@@ -612,7 +604,7 @@
           msg.textContent = '✓ You\u2019re on the list. We\u2019ll reach out if there\u2019s a match in the current cohort.';
           msg.style.color = '#a5eeff';
           form.reset();
-          selectOption('waitlist');
+          selectOption('phone');
           setTimeout(closeModal, 1800);
         } catch (err) {
           msg.textContent = `Something went wrong. Email ${SALES_EMAIL} and we\u2019ll add you manually.`;
