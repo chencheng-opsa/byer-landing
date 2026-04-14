@@ -35,11 +35,11 @@
         border-radius: 20px;
       }
       .btn-primary {
-        background: #2563eb;
+        background: #1e4fd1;
         box-shadow: 0 10px 40px -16px rgba(59, 130, 246, 0.6);
         transition: transform .08s ease, background .12s ease;
       }
-      .btn-primary:hover { transform: translateY(-1px); background: #3b82f6; }
+      .btn-primary:hover { transform: translateY(-1px); background: #2563eb; }
       .btn-ghost { background: rgba(255,255,255,0.04); border: 1px solid var(--line); }
       .btn-ghost:hover { background: rgba(255,255,255,0.08); }
       .tag {
@@ -83,7 +83,7 @@
       }
       .chat-avatar {
         width: 34px; height: 34px; border-radius: 10px;
-        background: #2563eb;
+        background: #1e4fd1;
         display: inline-flex; align-items: center; justify-content: center;
         color: #fff; font-weight: 600;
       }
@@ -127,7 +127,7 @@
       }
       .chat-mini .mini-avatar {
         width: 30px; height: 30px; border-radius: 9px;
-        background: #2563eb;
+        background: #1e4fd1;
         display: inline-flex; align-items: center; justify-content: center;
         color: #fff; font-size: 12px; font-weight: 600;
         flex-shrink: 0;
@@ -249,7 +249,7 @@
       }
       .option.selected .option-icon {
         color: #fff;
-        background: #2563eb;
+        background: #1e4fd1;
         box-shadow: 0 6px 18px -6px rgba(59,130,246,0.6);
       }
       .option-title { font-size: 14.5px; font-weight: 600; color: var(--ink); }
@@ -283,10 +283,12 @@
           <p class="text-white/70 max-w-2xl text-base md:text-lg leading-relaxed">
             Byer is a private, invite-only channel with exclusive pricing from distributors we source directly. Get in and you'll see deals that don't exist on broker chains, supplier broadcasts, or anywhere else. Current cohort is filling — limited spots.
           </p>
-          <div class="flex flex-col items-center gap-3 mt-1">
-            <span class="tag mono">Waitlist closing May 1</span>
+          <div class="flex flex-col items-center gap-4 mt-1">
             <a href="#" data-open-modal class="btn-primary text-sm md:text-base font-medium text-white rounded-full px-6 py-3">Join waitlist →</a>
-            <p class="text-xs text-white/45 mono">Invite-only · Telegram</p>
+            <p class="flex items-center gap-2 text-sm text-white/55">
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#3b82f6]"></span>
+              Waitlist closes <span class="text-white/85 font-medium">May 1, 2026</span>
+            </p>
           </div>
         </div>
       </div>
@@ -498,8 +500,9 @@
 
     <script>
       // ---------- Config ----------
-      const FORMSPREE_ENDPOINT = "https://formspree.io/f/mojyvkzz";
-      const SALES_EMAIL        = "sales@byer.ai";
+      const WAITLIST_ENDPOINT   = "https://fwzizpszqkrpiwmqhimm.supabase.co/functions/v1/waitlist-insert";
+      const SUPABASE_ANON_KEY   = "sb_publishable_FdOO_tQzir_dacJU7fjafg_e6tTdt6N";
+      const SALES_EMAIL         = "sales@byer.ai";
 
       // ---------- Modal ----------
       const modal = document.getElementById('byer-modal');
@@ -571,20 +574,14 @@
             msg.textContent = 'Enter a valid phone number so we can reach you.';
             msg.style.color = '#ffb4b4'; return;
           }
-          payload = { phone: phoneRaw, contact_method: 'phone', _subject: 'New byer.ai waitlist signup (phone)' };
+          payload = { phone: phoneRaw, contact_method: 'phone' };
         } else {
           const email = (data.email || '').trim();
           if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
             msg.textContent = 'Enter a valid email so we can reach you.';
             msg.style.color = '#ffb4b4'; return;
           }
-          payload = { email, contact_method: 'email', _subject: 'New byer.ai waitlist signup (email)' };
-        }
-
-        if (FORMSPREE_ENDPOINT === "FORMSPREE_ENDPOINT_URL") {
-          console.log('[byer.ai] Submission (Formspree endpoint not configured):', payload);
-          msg.textContent = '✓ Received locally (endpoint not configured). Check console.';
-          msg.style.color = '#a5eeff'; form.reset(); selectOption('phone'); return;
+          payload = { email, contact_method: 'email' };
         }
 
         btn.disabled = true;
@@ -592,14 +589,18 @@
         submitLabel.textContent = 'Sending…';
 
         try {
-          const res = await fetch(FORMSPREE_ENDPOINT, {
+          const res = await fetch(WAITLIST_ENDPOINT, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+              'apikey': SUPABASE_ANON_KEY
+            },
             body: JSON.stringify(payload)
           });
           if (!res.ok) {
             const err = await res.json().catch(() => ({}));
-            throw new Error((err.errors && err.errors[0] && err.errors[0].message) || 'Submission failed');
+            throw new Error(err.message || err.error || 'Submission failed');
           }
           msg.textContent = '✓ You\u2019re on the list. We\u2019ll reach out if there\u2019s a match in the current cohort.';
           msg.style.color = '#a5eeff';
