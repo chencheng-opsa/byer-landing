@@ -1,6 +1,6 @@
 # byer.ai — Landing page
 
-Landing page for Byer, the conversational AI buying agent that wholesalers &amp; resellers chat with on WhatsApp and Telegram.
+Landing page for Byer — a private, invite-only Telegram channel of exclusive wholesale deals.
 
 ```
 index.html     ← the landing page (chat-style lead capture)
