@@ -35,11 +35,11 @@
         border-radius: 20px;
       }
       .btn-primary {
-        background: #1e4fd1;
+        background: #1e3a8a;
         box-shadow: 0 10px 40px -16px rgba(59, 130, 246, 0.6);
         transition: transform .08s ease, background .12s ease;
       }
-      .btn-primary:hover { transform: translateY(-1px); background: #2563eb; }
+      .btn-primary:hover { transform: translateY(-1px); background: #1e40af; }
       .btn-ghost { background: rgba(255,255,255,0.04); border: 1px solid var(--line); }
       .btn-ghost:hover { background: rgba(255,255,255,0.08); }
       .tag {
@@ -83,7 +83,7 @@
       }
       .chat-avatar {
         width: 34px; height: 34px; border-radius: 10px;
-        background: #1e4fd1;
+        background: #1e3a8a;
         display: inline-flex; align-items: center; justify-content: center;
         color: #fff; font-weight: 600;
       }
@@ -127,7 +127,7 @@
       }
       .chat-mini .mini-avatar {
         width: 30px; height: 30px; border-radius: 9px;
-        background: #1e4fd1;
+        background: #1e3a8a;
         display: inline-flex; align-items: center; justify-content: center;
         color: #fff; font-size: 12px; font-weight: 600;
         flex-shrink: 0;
@@ -249,7 +249,7 @@
       }
       .option.selected .option-icon {
         color: #fff;
-        background: #1e4fd1;
+        background: #1e3a8a;
         box-shadow: 0 6px 18px -6px rgba(59,130,246,0.6);
       }
       .option-title { font-size: 14.5px; font-weight: 600; color: var(--ink); }
@@ -264,7 +264,7 @@
     <!-- NAV -->
     <nav class="max-w-6xl mx-auto px-6 md:px-8 py-6 flex items-center justify-between">
       <a href="#" class="flex items-center">
-        <img src="/byer-logo.png" alt="Byer.ai" class="h-8 md:h-9 w-auto" />
+        <img src="byer-logo.png" alt="Byer.ai" class="h-8 md:h-9 w-auto" />
       </a>
       <div class="flex items-center gap-3">
         <a href="#how" class="hidden md:inline text-sm text-white/70 hover:text-white">How it works</a>
@@ -283,12 +283,9 @@
           <p class="text-white/70 max-w-2xl text-base md:text-lg leading-relaxed">
             Byer is a private, invite-only channel with exclusive pricing from distributors we source directly. Get in and you'll see deals that don't exist on broker chains, supplier broadcasts, or anywhere else. Current cohort is filling — limited spots.
           </p>
-          <div class="flex flex-col items-center gap-4 mt-1">
-            <a href="#" data-open-modal class="btn-primary text-sm md:text-base font-medium text-white rounded-full px-6 py-3">Join waitlist →</a>
-            <p class="flex items-center gap-2 text-sm text-white/55">
-              <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#3b82f6]"></span>
-              Waitlist closes <span class="text-white/85 font-medium">May 1, 2026</span>
-            </p>
+          <div class="flex flex-col items-center gap-3 mt-1">
+            <a href="#" data-open-modal class="btn-primary text-sm md:text-base font-medium text-white rounded-full px-6 py-3">Join the waitlist →</a>
+            <p class="text-xs text-white/45">Closes May 1, 2026 · Invite-only · Telegram</p>
           </div>
         </div>
       </div>
@@ -418,7 +415,7 @@
     <!-- FOOTER -->
     <footer class="max-w-6xl mx-auto px-6 md:px-8 py-12 flex flex-col md:flex-row items-center justify-between gap-5 text-sm text-white/50" style="border-top: 1px solid var(--line);">
       <div class="flex items-center">
-        <img src="/byer-logo.png" alt="Byer.ai" class="h-6 w-auto opacity-80" />
+        <img src="byer-logo.png" alt="Byer.ai" class="h-6 w-auto opacity-80" />
       </div>
       <div class="flex items-center gap-5 flex-wrap justify-center">
         <a href="#" data-open-modal class="hover:text-white">Join waitlist</a>
@@ -608,6 +605,7 @@
           selectOption('phone');
           setTimeout(closeModal, 1800);
         } catch (err) {
+          console.error('[byer.ai waitlist] submission failed:', err);
           msg.textContent = `Something went wrong. Email ${SALES_EMAIL} and we\u2019ll add you manually.`;
           msg.style.color = '#ffb4b4';
         } finally {
