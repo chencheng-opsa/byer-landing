@@ -476,9 +476,9 @@
             <div class="mt-5">
               <!-- Waitlist panel -->
               <div class="option-panel" data-panel="waitlist">
-                <label for="byer-email" class="field-label">Email</label>
-                <input id="byer-email" class="input w-full" type="email" name="email" placeholder="you@company.com" autocomplete="email" required />
-                <p class="text-[11px] text-white/40 mt-2">We'll reach out if your book is a fit. No spam.</p>
+                <label for="byer-phone" class="field-label">Phone number</label>
+                <input id="byer-phone" class="input w-full" type="tel" name="phone" placeholder="+1 555 555 5555" autocomplete="tel" inputmode="tel" required />
+                <p class="text-[11px] text-white/40 mt-2">We'll DM you on Telegram if your book is a fit. No spam.</p>
               </div>
 
               <!-- Email panel -->
@@ -577,16 +577,17 @@
 
         // Route: waitlist (Formspree)
         const data = Object.fromEntries(new FormData(form).entries());
-        const email = (data.email || '').trim();
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-          msg.textContent = 'Enter a valid email so we can reach you.';
+        const phoneRaw = (data.phone || '').trim();
+        const phoneDigits = phoneRaw.replace(/\D/g, '');
+        if (phoneDigits.length < 7 || phoneDigits.length > 15) {
+          msg.textContent = 'Enter a valid phone number so we can reach you.';
           msg.style.color = '#ffb4b4'; return;
         }
         if (data._gotcha) {
           msg.textContent = '✓ Got it.'; msg.style.color = '#a5eeff'; form.reset(); selectOption('waitlist'); return;
         }
 
-        const payload = { email, source: 'waitlist', _subject: 'New byer.ai waitlist signup' };
+        const payload = { phone: phoneRaw, source: 'waitlist', _subject: 'New byer.ai waitlist signup' };
 
         if (FORMSPREE_ENDPOINT === "FORMSPREE_ENDPOINT_URL") {
           console.log('[byer.ai] Submission (Formspree endpoint not configured):', payload);
