@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Byer — Your buying agent. Only the offers that fit your book.</title>
+    <meta name="description" content="Excel attachments, broker PDFs, WhatsApp broadcasts, supplier pings — all day. Byer reads, filters, and negotiates on your supplier channels 24/7, so you only see the offers that fit your book." />
+    <meta property="og:title" content="Byer — Your buying agent. Only the offers that fit your book." />
+    <meta property="og:description" content="Excel attachments, broker PDFs, WhatsApp broadcasts, supplier pings — all day. Byer reads, filters, and negotiates on your supplier channels 24/7." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://byer.ai" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --bg: #08070c;
+        --bg-2: #0c0c14;
+        --ink: #f1ecea;           /* warmer off-white */
+        --ink-dim: #a5a3b0;
+        --line: rgba(255, 255, 255, 0.07);
+        --accent: #7c5cff;
+        --accent-2: #22d3ee;
+        --wa: #25d366;            /* whatsapp green */
+        --tg: #229ED9;            /* telegram blue */
+      }
+      * { -webkit-font-smoothing: antialiased; }
+      html, body { background: var(--bg); color: var(--ink); font-family: "Inter", system-ui, sans-serif; letter-spacing: -0.005em; }
+      .mono { font-family: "JetBrains Mono", ui-monospace, monospace; letter-spacing: 0; }
+      .gradient-text {
+        background: linear-gradient(90deg, #fff 0%, #c9c6ff 50%, #7eeaff 100%);
+        -webkit-background-clip: text; background-clip: text; color: transparent;
+      }
+      .grid-bg {
+        background-image:
+          radial-gradient(ellipse at 20% 0%, rgba(124, 92, 255, 0.18), transparent 50%),
+          radial-gradient(ellipse at 80% 0%, rgba(34, 211, 238, 0.12), transparent 55%),
+          linear-gradient(to bottom, transparent, var(--bg) 85%);
+      }
+      .hairline { border: 1px solid var(--line); }
+      .card {
+        background: linear-gradient(180deg, rgba(255,255,255,0.022), rgba(255,255,255,0.004));
+        border: 1px solid var(--line);
+        border-radius: 20px;
+      }
+      .btn-primary {
+        background: linear-gradient(180deg, #8e78ff, #6a48f5);
+        box-shadow: 0 1px 0 rgba(255,255,255,0.25) inset, 0 10px 40px -10px rgba(124, 92, 255, 0.6);
+        transition: transform .08s ease;
+      }
+      .btn-primary:hover { transform: translateY(-1px); }
+      .btn-ghost { background: rgba(255,255,255,0.04); border: 1px solid var(--line); }
+      .btn-ghost:hover { background: rgba(255,255,255,0.08); }
+      .tag {
+        display: inline-flex; align-items: center; gap: 6px;
+        padding: 4px 10px; border-radius: 999px;
+        background: rgba(124, 92, 255, 0.08);
+        border: 1px solid rgba(124, 92, 255, 0.25);
+        color: #c9c6ff; font-size: 12px; letter-spacing: 0.02em;
+      }
+      .dot { width: 6px; height: 6px; border-radius: 999px; background: #22d3ee; box-shadow: 0 0 10px #22d3ee; }
+
+      /* Form */
+      .input, .select, .textarea {
+        width: 100%; background: rgba(255,255,255,0.03);
+        border: 1px solid var(--line); border-radius: 10px;
+        padding: 12px 14px; color: var(--ink); font-size: 14px;
+        transition: border-color .15s ease, background .15s ease;
+      }
+      .input:focus, .select:focus, .textarea:focus { outline: none; border-color: rgba(124,92,255,0.6); background: rgba(124,92,255,0.06); }
+      .input::placeholder, .textarea::placeholder { color: #6b6b7d; }
+
+      /* Honeypot — hidden from humans, visible to naive bots */
+      .hp {
+        position: absolute !important; left: -9999px !important; top: auto !important;
+        width: 1px !important; height: 1px !important; overflow: hidden !important;
+      }
+
+      /* Chat-style form */
+      .chat-shell {
+        background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.005));
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 18px;
+      }
+      .chat-header {
+        display: flex; align-items: center; gap: 10px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid var(--line);
+        margin-bottom: 16px;
+      }
+      .chat-avatar {
+        width: 34px; height: 34px; border-radius: 10px;
+        background: linear-gradient(135deg, #7c5cff, #22d3ee);
+        display: inline-flex; align-items: center; justify-content: center;
+        color: #fff; font-weight: 600;
+      }
+      .bubble {
+        max-width: 92%;
+        padding: 11px 14px;
+        border-radius: 14px;
+        font-size: 14.5px;
+        line-height: 1.5;
+      }
+      .bubble.bot {
+        background: rgba(124, 92, 255, 0.10);
+        border: 1px solid rgba(124, 92, 255, 0.22);
+        color: #eaeaf2;
+        border-top-left-radius: 4px;
+      }
+      .bubble.bot + .bubble.bot { margin-top: 6px; }
+      .bubble.user {
+        background: rgba(34, 211, 238, 0.08);
+        border: 1px solid rgba(34, 211, 238, 0.20);
+        color: #eaeaf2;
+        border-top-right-radius: 4px;
+        margin-left: auto;
+      }
+      .chat-row { display: flex; }
+      .chat-row.right { justify-content: flex-end; }
+      .chat-mini {
+        background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.005));
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 16px;
+        display: flex; flex-direction: column; gap: 10px;
+        transition: transform .2s ease, border-color .2s ease;
+      }
+      .chat-mini:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.12); }
+      .chat-mini .mini-header {
+        display: flex; align-items: center; gap: 10px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--line);
+        margin-bottom: 4px;
+      }
+      .chat-mini .mini-avatar {
+        width: 30px; height: 30px; border-radius: 9px;
+        background: linear-gradient(135deg, #7c5cff, #22d3ee);
+        display: inline-flex; align-items: center; justify-content: center;
+        color: #fff; font-size: 12px; font-weight: 600;
+        flex-shrink: 0;
+      }
+      .chat-mini .platform {
+        display: inline-flex; align-items: center; gap: 5px;
+        font-size: 10.5px; font-family: "JetBrains Mono", ui-monospace, monospace;
+        color: rgba(255,255,255,0.55);
+      }
+      .platform .pdot { width: 6px; height: 6px; border-radius: 999px; }
+      .platform.wa .pdot { background: var(--wa); box-shadow: 0 0 8px rgba(37,211,102,0.6); }
+      .platform.tg .pdot { background: var(--tg); box-shadow: 0 0 8px rgba(34,158,217,0.6); }
+      .online { font-size: 10.5px; color: #9ae8a0; display: inline-flex; align-items: center; gap: 5px; }
+      .online::before { content: ""; width: 6px; height: 6px; border-radius: 999px; background: #25d366; box-shadow: 0 0 8px rgba(37,211,102,0.7); }
+      .chat-mini .bubble { font-size: 13.5px; padding: 10px 13px; max-width: 88%; }
+      .bubble .ts {
+        display: block; margin-top: 4px;
+        font-size: 10.5px; font-family: "JetBrains Mono", ui-monospace, monospace;
+        color: rgba(255,255,255,0.4); text-align: right;
+        letter-spacing: 0.02em;
+      }
+      .typing {
+        display: inline-flex; gap: 3px; padding: 10px 12px;
+        background: rgba(124, 92, 255, 0.08);
+        border: 1px solid rgba(124, 92, 255, 0.18);
+        border-radius: 14px; border-top-left-radius: 4px;
+      }
+      .typing span {
+        width: 5px; height: 5px; border-radius: 999px; background: rgba(255,255,255,0.55);
+        animation: tdot 1.2s infinite ease-in-out;
+      }
+      .typing span:nth-child(2) { animation-delay: 0.15s; }
+      .typing span:nth-child(3) { animation-delay: 0.3s; }
+      @keyframes tdot {
+        0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+        30% { opacity: 1; transform: translateY(-2px); }
+      }
+      .chat-textarea {
+        width: 100%; background: rgba(255,255,255,0.03);
+        border: 1px solid var(--line); border-radius: 12px;
+        padding: 14px; color: var(--ink); font-size: 14.5px; line-height: 1.55;
+        min-height: 110px; resize: vertical;
+        transition: border-color .15s ease, background .15s ease;
+        font-family: inherit;
+      }
+      .chat-textarea:focus { outline: none; border-color: rgba(124,92,255,0.6); background: rgba(124,92,255,0.06); }
+      .chat-textarea::placeholder { color: #6b6b7d; }
+      .chat-meta { font-size: 11px; color: #6b6b7d; }
+      .chat-meta.ok { color: #a5eeff; }
+
+      /* Faq */
+      details summary { cursor: pointer; list-style: none; }
+      details summary::-webkit-details-marker { display: none; }
+      details[open] .chev { transform: rotate(45deg); }
+      .chev { transition: transform .15s ease; }
+
+      /* Utility */
+      .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--line), transparent); }
+
+      /* Modal */
+      .serif { font-family: "Instrument Serif", "Times New Roman", serif; letter-spacing: -0.01em; font-weight: 400; }
+      .modal-backdrop {
+        position: fixed; inset: 0; z-index: 60;
+        background: rgba(5, 5, 10, 0.72);
+        backdrop-filter: blur(6px);
+        display: none;
+        align-items: center; justify-content: center;
+        padding: 20px;
+        opacity: 0;
+        transition: opacity .22s ease;
+      }
+      .modal-backdrop.open { display: flex; opacity: 1; }
+      .modal-card {
+        width: 100%; max-width: 540px;
+        background: #09090f;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        box-shadow: 0 40px 80px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(124,92,255,0.08);
+        transform: translateY(12px) scale(0.98);
+        transition: transform .22s ease;
+        max-height: calc(100vh - 40px);
+        overflow: hidden;
+        display: flex; flex-direction: column;
+        position: relative;
+      }
+      .modal-backdrop.open .modal-card { transform: translateY(0) scale(1); }
+      .modal-close {
+        position: absolute; top: 16px; right: 16px; z-index: 2;
+        width: 34px; height: 34px; border-radius: 10px;
+        display: inline-flex; align-items: center; justify-content: center;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid var(--line);
+        color: rgba(255,255,255,0.7);
+        cursor: pointer;
+        transition: background .15s ease, color .15s ease;
+      }
+      .modal-close:hover { background: rgba(255,255,255,0.08); color: #fff; }
+      .modal-top {
+        padding: 32px 32px 26px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.012));
+        border-bottom: 1px solid var(--line);
+      }
+      .modal-eyebrow {
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase;
+        color: rgba(255,255,255,0.5); margin-bottom: 14px;
+      }
+      .modal-title { font-size: 42px; line-height: 1; }
+      .modal-sub { font-size: 14px; color: rgba(255,255,255,0.6); margin-top: 12px; max-width: 420px; line-height: 1.55; }
+      .modal-body { padding: 22px 28px 28px; overflow-y: auto; }
+      .option-list { display: flex; flex-direction: column; gap: 10px; }
+      .option {
+        display: flex; align-items: center; gap: 14px;
+        width: 100%; text-align: left;
+        padding: 14px 16px;
+        background: rgba(255,255,255,0.022);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        transition: all .15s ease;
+        cursor: pointer;
+        color: inherit;
+      }
+      .option:hover { background: rgba(255,255,255,0.045); border-color: rgba(255,255,255,0.14); }
+      .option.selected {
+        background: rgba(124, 92, 255, 0.10);
+        border-color: rgba(124, 92, 255, 0.50);
+        box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.08);
+      }
+      .option-icon {
+        width: 42px; height: 42px; border-radius: 11px;
+        background: rgba(124,92,255,0.10);
+        display: inline-flex; align-items: center; justify-content: center;
+        flex-shrink: 0; color: #c9c6ff;
+      }
+      .option.selected .option-icon {
+        color: #fff;
+        background: linear-gradient(135deg, #7c5cff, #6a48f5);
+        box-shadow: 0 6px 18px -6px rgba(124,92,255,0.6);
+      }
+      .option-title { font-size: 14.5px; font-weight: 600; color: var(--ink); }
+      .option-sub { font-size: 12.5px; color: rgba(255,255,255,0.55); margin-top: 2px; }
+      .option-panel { display: block; }
+      .option-panel.hidden { display: none; }
+      .field-label { display: block; font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+      body.modal-open { overflow: hidden; }
+    </style>
+  </head>
+  <body class="min-h-screen">
+    <!-- NAV -->
+    <nav class="max-w-6xl mx-auto px-6 md:px-8 py-6 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2">
+        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg" style="background: linear-gradient(135deg, #7c5cff, #22d3ee);">
+          <span class="mono font-semibold text-sm text-white">b</span>
+        </span>
+        <span class="font-semibold tracking-tight">byer<span style="color:var(--accent)">.</span>ai</span>
+      </a>
+      <div class="flex items-center gap-3">
+        <a href="#how" class="hidden md:inline text-sm text-white/70 hover:text-white">How it works</a>
+        <a href="#faq" class="hidden md:inline text-sm text-white/70 hover:text-white">FAQ</a>
+        <a href="#" data-open-modal class="btn-primary text-sm font-medium text-white rounded-full px-4 py-2">Get early access</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="grid-bg">
+      <div class="max-w-6xl mx-auto px-6 md:px-8 pt-16 md:pt-24 pb-24 md:pb-32">
+        <div class="flex flex-col items-center text-center gap-7">
+          <h1 class="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] gradient-text max-w-4xl">
+            Your buying agent. Only the offers that actually fit your book.
+          </h1>
+          <p class="text-white/70 max-w-2xl text-base md:text-lg leading-relaxed">
+            Offer sheets pour in all day — Excel attachments in your inbox, broker PDFs, WhatsApp broadcasts. While you're scrolling at midnight, your competitors' buying agent has already shortlisted, replied, and locked pricing. Byer is yours — reading, filtering, and negotiating on your supplier channels 24/7.
+          </p>
+          <div class="flex items-center gap-3 mt-2">
+            <a href="#" data-open-modal class="btn-primary text-sm md:text-base font-medium text-white rounded-full px-6 py-3">Hire your byer agent →</a>
+          </div>
+          <p class="text-xs text-white/45 mono mt-1">Always on · Learns your book · Filters the noise</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS + EXAMPLES merged -->
+    <section id="how" class="max-w-6xl mx-auto px-6 md:px-8 py-24 md:py-32">
+      <div class="flex flex-col items-center text-center gap-4 mb-14">
+        <span class="tag mono text-[11px]">how byer works</span>
+        <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">Onboard once. Chat whenever. Watch it get sharper.</h2>
+        <p class="text-white/60 max-w-2xl">Byer handles supplier outreach and filters the offers. Every chat teaches it your book — the next match is tighter than the last.</p>
+      </div>
+
+      <!-- Three steps: onboard → chat whenever → get sharper -->
+      <div class="grid md:grid-cols-3 gap-5 mb-20">
+        <div class="card p-7">
+          <div class="mono text-xs text-white/40 mb-4">01 · day one</div>
+          <h3 class="text-lg font-semibold mb-2">Onboard in one chat</h3>
+          <p class="text-sm text-white/65 leading-relaxed">Brands, order sizes, price targets, margin floors, sales channels. Two minutes, plain language.</p>
+        </div>
+        <div class="card p-7">
+          <div class="mono text-xs text-white/40 mb-4">02 · whenever</div>
+          <h3 class="text-lg font-semibold mb-2">Byer queries suppliers</h3>
+          <p class="text-sm text-white/65 leading-relaxed">No more canned DMs or Excel replies. Byer reaches out on your behalf, filtered to who carries your spec, and brings the hits into chat.</p>
+        </div>
+        <div class="card p-7">
+          <div class="mono text-xs text-white/40 mb-4">03 · every week</div>
+          <h3 class="text-lg font-semibold mb-2">It compounds</h3>
+          <p class="text-sm text-white/65 leading-relaxed">Every chat teaches Byer what you accept, pass on, and win with. Proactive pings replace cold searches.</p>
+        </div>
+      </div>
+
+      <!-- Proof via a compounding weekly story -->
+      <div class="flex items-end justify-between mb-6 flex-wrap gap-3">
+        <div class="mono text-xs text-white/45">a week with byer</div>
+        <div class="mono text-xs text-white/40">the agent compounds over time</div>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5 mb-10">
+        <div class="chat-mini">
+          <div class="mini-header">
+            <span class="mini-avatar mono">b</span>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2">
+                <span class="text-[13px] font-medium">Byer</span>
+                <span class="platform wa"><span class="pdot"></span>WhatsApp</span>
+              </div>
+              <div class="mono text-[10px] text-white/45 mt-0.5">monday · 09:12</div>
+            </div>
+            <span class="online">online</span>
+          </div>
+          <div class="chat-row right"><div class="bubble user">I run a beauty reseller. CeraVe, La Roche-Posay, niche fragrance. 500–2,000 units/SKU. Amazon + Shopify. Margin floor 18%.<span class="ts">09:14</span></div></div>
+          <div class="chat-row"><div class="bubble bot">Got it. I'll watch all three categories against your margin floor and ping you on anything that fits.<span class="ts">09:14</span></div></div>
+        </div>
+        <div class="chat-mini">
+          <div class="mini-header">
+            <span class="mini-avatar mono">b</span>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2">
+                <span class="text-[13px] font-medium">Byer</span>
+                <span class="platform tg"><span class="pdot"></span>Telegram</span>
+              </div>
+              <div class="mono text-[10px] text-white/45 mt-0.5">wednesday · 14:03</div>
+            </div>
+            <span class="online">online</span>
+          </div>
+          <div class="chat-row right"><div class="bubble user">Running low on CeraVe moisturizer — what do we have this week?<span class="ts">14:03</span></div></div>
+          <div class="chat-row"><div class="typing" aria-label="Byer is typing"><span></span><span></span><span></span></div></div>
+          <div class="chat-row"><div class="bubble bot">3 suppliers at your tier. Best price <span class="mono text-white">$10.80</span> · 2,400 units · NJ. Reserve for you?<span class="ts">14:04</span></div></div>
+        </div>
+        <div class="chat-mini">
+          <div class="mini-header">
+            <span class="mini-avatar mono">b</span>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2">
+                <span class="text-[13px] font-medium">Byer</span>
+                <span class="platform wa"><span class="pdot"></span>WhatsApp</span>
+              </div>
+              <div class="mono text-[10px] text-white/45 mt-0.5">sunday · 08:47</div>
+            </div>
+            <span class="online">online</span>
+          </div>
+          <div class="chat-row"><div class="bubble bot">New Dior Sauvage 100ml lot just dropped at <span class="mono">$58</span> — your best quarterly price. 1,200 units. Reserve before Tuesday?<span class="ts">08:47</span></div></div>
+          <div class="chat-row right"><div class="bubble user">Take 600. Hold 200 more if the next lot's under $60.<span class="ts">08:52</span></div></div>
+        </div>
+      </div>
+
+      <!-- Proof row -->
+      <!-- TODO (Chencheng): once you have real numbers, replace the counts below.
+           e.g. "40+ verified suppliers · 1,200+ live SKUs · Updated hourly" -->
+      <div class="card p-6 flex flex-wrap items-center justify-around gap-4 text-center">
+        <div>
+          <div class="mono text-xs text-white/40">suppliers</div>
+          <div class="text-lg font-semibold mt-1">Verified distributors <span class="text-white/50 text-sm font-normal">onboarding weekly</span></div>
+        </div>
+        <div class="hidden md:block w-px h-8" style="background: var(--line);"></div>
+        <div>
+          <div class="mono text-xs text-white/40">inventory</div>
+          <div class="text-lg font-semibold mt-1">Updated <span class="gradient-text">live</span></div>
+        </div>
+        <div class="hidden md:block w-px h-8" style="background: var(--line);"></div>
+        <div>
+          <div class="mono text-xs text-white/40">chat</div>
+          <div class="text-lg font-semibold mt-1">WhatsApp &amp; Telegram <span class="text-white/50 text-sm font-normal">· native</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SELL ON BYER -->
+    <section class="max-w-6xl mx-auto px-6 md:px-8 pb-24">
+      <div class="card p-7 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="flex-1">
+          <span class="tag mono text-[11px]">for suppliers</span>
+          <h3 class="text-xl md:text-2xl font-semibold tracking-tight mt-3">Got product to move? List it on Byer.</h3>
+          <p class="text-sm text-white/65 mt-2 leading-relaxed">Most wholesalers &amp; resellers also carry inventory they'd like to sell. If that's you, we'll plug your SKUs into the agent and route matched demand back to you.</p>
+        </div>
+        <a href="mailto:sales@byer.ai?subject=Selling%20on%20Byer&body=Hi%20Byer%20team%2C%0A%0AA%20bit%20about%20what%20I%20sell%3A%0A%0A" class="btn-ghost text-sm font-medium text-white rounded-full px-5 py-3 whitespace-nowrap">Email sales@byer.ai →</a>
+      </div>
+    </section>
+
+    <div class="divider max-w-6xl mx-auto"></div>
+
+    <!-- FAQ -->
+    <section id="faq" class="max-w-3xl mx-auto px-6 md:px-8 py-24 md:py-32">
+      <div class="text-center mb-12">
+        <span class="tag mono text-[11px]">FAQ</span>
+      </div>
+      <div class="flex flex-col gap-3">
+        <details class="card p-6">
+          <summary class="flex items-center justify-between font-medium"><span>What does early access cost?</span><span class="chev text-white/40">+</span></summary>
+          <p class="text-sm text-white/65 mt-3 leading-relaxed">Nothing today. The first cohort joins complimentary while we tune the agent. Pricing is walked through during onboarding — nothing owed until Byer works for you.</p>
+        </details>
+        <details class="card p-6">
+          <summary class="flex items-center justify-between font-medium"><span>Where does inventory come from and which categories are live?</span><span class="chev text-white/40">+</span></summary>
+          <p class="text-sm text-white/65 mt-3 leading-relaxed">Verified wholesale distributors — beauty, fragrance, and personal care are live first. We ingest live inventory and onboard new distributors weekly. Request any category and we'll ping you when it opens.</p>
+        </details>
+        <details class="card p-6">
+          <summary class="flex items-center justify-between font-medium"><span>How do I get offers and negotiate?</span><span class="chev text-white/40">+</span></summary>
+          <p class="text-sm text-white/65 mt-3 leading-relaxed">All inside WhatsApp or Telegram. You set the cadence. Submit offers in the chat — "I'll take 500 at $10.50" — Byer relays, supplier responds, you stay in control.</p>
+        </details>
+        <details class="card p-6">
+          <summary class="flex items-center justify-between font-medium"><span>Is my data private?</span><span class="chev text-white/40">+</span></summary>
+          <p class="text-sm text-white/65 mt-3 leading-relaxed">Your profile is never shared with other resellers. Suppliers see anonymized demand signals only — until you submit an offer.</p>
+        </details>
+        <details class="card p-6">
+          <summary class="flex items-center justify-between font-medium"><span>I'm a supplier — how do I join?</span><span class="chev text-white/40">+</span></summary>
+          <p class="text-sm text-white/65 mt-3 leading-relaxed">Suppliers join by invitation at category launch. If you carry beauty, fragrance, or personal care, email <a class="text-white underline" href="mailto:sales@byer.ai">sales@byer.ai</a>.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="max-w-6xl mx-auto px-6 md:px-8 py-12 flex flex-col md:flex-row items-center justify-between gap-5 text-sm text-white/50" style="border-top: 1px solid var(--line);">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center justify-center w-6 h-6 rounded-md" style="background: linear-gradient(135deg, #7c5cff, #22d3ee);"><span class="mono font-semibold text-[11px] text-white">b</span></span>
+        <span class="mono">byer.ai</span>
+      </div>
+      <div class="flex items-center gap-5 flex-wrap justify-center">
+        <a href="#" data-open-modal class="hover:text-white">Get access</a>
+        <a href="#faq" class="hover:text-white">FAQ</a>
+        <a href="/privacy.html" class="hover:text-white">Privacy</a>
+        <a href="mailto:sales@byer.ai" class="hover:text-white">Sell on Byer</a>
+        <a href="mailto:sales@byer.ai" class="hover:text-white">sales@byer.ai</a>
+      </div>
+      <div class="text-white/35">© 2026 Byer</div>
+    </footer>
+
+    <!-- LEAD MODAL -->
+    <div id="byer-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+      <div class="modal-card">
+        <button class="modal-close" data-close-modal aria-label="Close">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l10 10M12 2L2 12"/></svg>
+        </button>
+
+        <div class="modal-top">
+          <div class="modal-eyebrow">Hire a buying agent</div>
+          <div id="modal-title" class="modal-title serif">Get in touch</div>
+          <p class="modal-sub">Pick the fastest way to start with Byer and we'll take it from there.</p>
+        </div>
+
+        <div class="modal-body">
+          <form id="byer-form" novalidate>
+            <div class="option-list" role="radiogroup" aria-label="Choose how to connect">
+              <button type="button" class="option selected" role="radio" aria-checked="true" data-option="waitlist">
+                <span class="option-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>
+                </span>
+                <span class="flex-1">
+                  <span class="option-title block">Join waitlist</span>
+                  <span class="option-sub block">Drop your email and we'll reach out</span>
+                </span>
+              </button>
+
+              <button type="button" class="option" role="radio" aria-checked="false" data-option="email">
+                <span class="option-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 7 9-7"/></svg>
+                </span>
+                <span class="flex-1">
+                  <span class="option-title block">Send an email</span>
+                  <span class="option-sub block">Write to sales@byer.ai directly</span>
+                </span>
+              </button>
+            </div>
+
+            <!-- Dynamic panels -->
+            <div class="mt-5">
+              <!-- Waitlist panel -->
+              <div class="option-panel" data-panel="waitlist">
+                <label for="byer-email" class="field-label">Email</label>
+                <input id="byer-email" class="input w-full" type="email" name="email" placeholder="you@company.com" autocomplete="email" required />
+                <p class="text-[11px] text-white/40 mt-2">We'll message you the moment your first match is ready. No spam.</p>
+              </div>
+
+              <!-- Email panel -->
+              <div class="option-panel hidden" data-panel="email">
+                <p class="text-sm text-white/70 leading-relaxed">We'll open your mail client with a fresh draft to <span class="mono text-white/90">sales@byer.ai</span>. Tell us about your book and we'll reply within a day.</p>
+              </div>
+            </div>
+
+            <!-- Honeypot — hidden from humans, Formspree auto-drops if filled -->
+            <div class="hp" aria-hidden="true">
+              <label>Do not fill this field: <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+            </div>
+
+            <button id="submit-btn" type="submit" class="btn-primary text-white font-medium rounded-lg px-5 py-3 w-full mt-5">
+              <span id="submit-label">Continue</span>
+            </button>
+            <p id="form-msg" class="text-sm text-white/60 min-h-[20px] mt-3"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ---------- Config ----------
+      // Replace with your real endpoint before deploy
+      const FORMSPREE_ENDPOINT = "https://formspree.io/f/mojyvkzz";
+      const SALES_EMAIL        = "sales@byer.ai";
+
+      // ---------- Modal ----------
+      const modal = document.getElementById('byer-modal');
+      const openers = document.querySelectorAll('[data-open-modal]');
+      const closers = modal.querySelectorAll('[data-close-modal]');
+
+      function openModal(e) {
+        if (e) e.preventDefault();
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+        setTimeout(() => {
+          const firstOpt = modal.querySelector('.option.selected');
+          if (firstOpt) firstOpt.focus();
+        }, 120);
+      }
+      function closeModal() {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+      }
+      openers.forEach(el => el.addEventListener('click', openModal));
+      closers.forEach(el => el.addEventListener('click', closeModal));
+      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+
+      // ---------- Option picker ----------
+      const options = modal.querySelectorAll('.option');
+      const panels  = modal.querySelectorAll('.option-panel');
+      const submitLabel = document.getElementById('submit-label');
+
+      function selectOption(value) {
+        options.forEach(o => {
+          const active = o.dataset.option === value;
+          o.classList.toggle('selected', active);
+          o.setAttribute('aria-checked', active ? 'true' : 'false');
+        });
+        panels.forEach(p => p.classList.toggle('hidden', p.dataset.panel !== value));
+        // Update CTA label by context
+        if (value === 'waitlist')   submitLabel.textContent = 'Join the waitlist';
+        else if (value === 'email') submitLabel.textContent = 'Open email';
+      }
+      options.forEach(o => o.addEventListener('click', () => selectOption(o.dataset.option)));
+
+      // ---------- Form submit ----------
+      const form = document.getElementById('byer-form');
+      const msg  = document.getElementById('form-msg');
+      const btn  = document.getElementById('submit-btn');
+
+      function getSelected() {
+        const el = modal.querySelector('.option.selected');
+        return el ? el.dataset.option : 'waitlist';
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        msg.textContent = '';
+        msg.style.color = '';
+        const selected = getSelected();
+
+        // Route: email
+        if (selected === 'email') {
+          const subject = encodeURIComponent("Byer — interested");
+          const body    = encodeURIComponent("Hi Byer team,\n\nA bit about what I source:\n\n");
+          window.location.href = `mailto:${SALES_EMAIL}?subject=${subject}&body=${body}`;
+          msg.textContent = '✓ Drafting your email…';
+          msg.style.color = '#a5eeff';
+          setTimeout(closeModal, 1200);
+          return;
+        }
+
+        // Route: waitlist (Formspree)
+        const data = Object.fromEntries(new FormData(form).entries());
+        const email = (data.email || '').trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          msg.textContent = 'Enter a valid email so we can reach you.';
+          msg.style.color = '#ffb4b4'; return;
+        }
+        if (data._gotcha) { // honeypot: silently succeed
+          msg.textContent = '✓ Got it.'; msg.style.color = '#a5eeff'; form.reset(); selectOption('waitlist'); return;
+        }
+
+        const payload = { email, source: 'waitlist', _subject: 'New byer.ai waitlist signup' };
+
+        // Dev fallback when endpoint isn't wired
+        if (FORMSPREE_ENDPOINT === "FORMSPREE_ENDPOINT_URL") {
+          console.log('[byer.ai] Submission (Formspree endpoint not configured):', payload);
+          msg.textContent = '✓ Received locally (endpoint not configured). Check console.';
+          msg.style.color = '#a5eeff'; form.reset(); selectOption('waitlist'); return;
+        }
+
+        btn.disabled = true;
+        const orig = submitLabel.textContent;
+        submitLabel.textContent = 'Sending…';
+
+        try {
+          const res = await fetch(FORMSPREE_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          if (!res.ok) {
+            const err = await res.json().catch(() => ({}));
+            throw new Error((err.errors && err.errors[0] && err.errors[0].message) || 'Submission failed');
+          }
+          msg.textContent = '✓ You\u2019re on the list. Byer will reach out when your first match is ready.';
+          msg.style.color = '#a5eeff';
+          form.reset();
+          selectOption('waitlist');
+          setTimeout(closeModal, 1800);
+        } catch (err) {
+          msg.textContent = `Something went wrong. Email ${SALES_EMAIL} and we\u2019ll add you manually.`;
+          msg.style.color = '#ffb4b4';
+        } finally {
+          btn.disabled = false;
+          submitLabel.textContent = orig;
+        }
+      });
+    </script>
+
+  </body>
+</html>
