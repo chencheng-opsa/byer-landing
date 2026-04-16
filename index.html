@@ -474,6 +474,12 @@
               </div>
             </div>
 
+            <!-- Lead interest (optional) -->
+            <div class="mt-5">
+              <label for="byer-lead-interest" class="field-label">Categories or brands you're after — helps us match you faster</label>
+              <textarea id="byer-lead-interest" class="input w-full" name="lead_interest" rows="2" placeholder="e.g. First-edition sci-fi, rare art books…"></textarea>
+            </div>
+
             <!-- Honeypot — hidden from humans, Formspree auto-drops if filled -->
             <div class="hp" aria-hidden="true">
               <label>Do not fill this field: <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
@@ -556,6 +562,8 @@
           msg.textContent = '✓ Got it.'; msg.style.color = '#a5eeff'; form.reset(); selectOption('phone'); return;
         }
 
+        const leadInterest = (data.lead_interest || '').trim();
+
         let payload;
         if (selected === 'phone') {
           const phoneRaw = (data.phone || '').trim();
@@ -573,6 +581,7 @@
           }
           payload = { email, contact_method: 'email' };
         }
+        if (leadInterest) payload.lead_interest = leadInterest;
 
         btn.disabled = true;
         const orig = submitLabel.textContent;
