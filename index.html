@@ -263,12 +263,21 @@
   </head>
   <body class="min-h-screen">
     <!-- NAV -->
-    <nav class="max-w-6xl mx-auto px-6 md:px-8 py-6 flex items-center justify-between relative">
-      <a href="#" class="flex items-center">
-        <img src="byer-logo.png" alt="Byer.ai" class="h-11 md:h-14 w-auto" />
-      </a>
-      <a href="#" class="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-xl md:text-2xl font-bold tracking-tight text-white hover:text-white">byer.ai</a>
-      <div class="flex items-center gap-3">
+    <nav class="max-w-6xl mx-auto px-6 md:px-8 py-6 flex items-center justify-between relative gap-4">
+      <div class="flex items-center gap-3 min-w-0">
+        <a href="#" class="flex items-center shrink-0">
+          <img src="byer-logo.png" alt="Byer.ai" class="h-11 md:h-14 w-auto" />
+        </a>
+        <span class="hidden md:inline text-white/20 select-none">/</span>
+        <span class="hidden md:inline-flex mono text-[11px] text-white/55 items-center gap-1.5 whitespace-nowrap">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400" style="box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.15);"></span>
+          channel open · cohort 04
+        </span>
+      </div>
+      <a href="#" class="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-xl md:text-2xl font-bold tracking-tight text-white hover:text-white">byer.ai</a>
+      <div class="flex items-center gap-3 shrink-0">
+        <a href="#drops" class="hidden md:inline text-sm text-white/70 hover:text-white">Drops</a>
+        <a href="#suppliers" class="hidden md:inline text-sm text-white/70 hover:text-white">Suppliers</a>
         <a href="#how" class="hidden md:inline text-sm text-white/70 hover:text-white">How it works</a>
         <a href="#faq" class="hidden md:inline text-sm text-white/70 hover:text-white">FAQ</a>
         <a href="#" data-open-modal class="btn-primary text-sm font-medium text-white rounded-full px-4 py-2 whitespace-nowrap">WhatsApp waitlist</a>
@@ -277,17 +286,36 @@
 
     <!-- HERO -->
     <section class="hero-bg">
-      <div class="max-w-6xl mx-auto px-6 md:px-8 pt-16 md:pt-24 pb-20 md:pb-24">
-        <div class="flex flex-col items-center text-center gap-7">
-          <h1 class="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] max-w-4xl text-white">
-            Exclusive wholesale deals. Delivered on Telegram.
-          </h1>
-          <p class="text-white/70 max-w-2xl text-base md:text-lg leading-relaxed">
-            Byer is a private, invite-only channel with exclusive pricing from distributors we source directly. Get in and you'll see deals that don't exist on broker chains, supplier broadcasts, or anywhere else. Current cohort is filling — limited spots.
-          </p>
-          <div class="flex flex-col items-center gap-5 mt-1">
-            <a href="https://t.me/byer_deals_bot" target="_blank" rel="noopener" class="flex flex-col items-center gap-3 transition-transform duration-150 hover:-translate-y-0.5" title="Scan to open the Byer bot on Telegram">
-              <span class="relative block h-48 w-48" style="color: #60a5fa; filter: drop-shadow(0 12px 44px rgba(96, 165, 250, 0.35));">
+      <div class="max-w-6xl mx-auto px-6 md:px-8 pt-10 md:pt-16 pb-20 md:pb-24">
+        <div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+          <!-- Left: copy + CTA -->
+          <div class="flex flex-col gap-6 md:gap-7">
+            <span class="tag mono self-start">
+              <span class="dot"></span>invite-only · cohort 04
+            </span>
+            <h1 class="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-white">
+              A private wholesale channel for serious resellers.
+            </h1>
+            <p class="text-white/70 max-w-xl text-base md:text-lg leading-relaxed">
+              Byer is an invite-only Telegram channel where vetted distributors post live wholesale drops — brand-name beauty, fragrance, electronics, apparel — at <span class="text-white">up to 90% off retail</span>. No marketplace, no listings. Just the drop, the price, and a reserve button. Most members close their first deal within <span class="text-white">48 hours</span>.
+            </p>
+            <div class="flex flex-wrap items-center gap-3">
+              <a href="#" data-open-modal class="btn-primary text-sm md:text-base font-medium text-white rounded-full px-6 py-3">Join the WhatsApp waitlist →</a>
+              <a href="https://t.me/byer_deals_bot" target="_blank" rel="noopener" class="btn-ghost text-sm md:text-base font-medium text-white rounded-full px-5 py-3">Open on Telegram</a>
+            </div>
+            <p class="text-xs text-white/45">Cohort 04 closes soon · WhatsApp access rolling out next</p>
+          </div>
+
+          <!-- Right: QR card -->
+          <div class="card p-6 md:p-7 flex flex-col gap-5">
+            <div class="flex items-center justify-between gap-4">
+              <span class="mono text-[11px] tracking-[0.12em] text-white/55 uppercase truncate">t.me/byer_deals_bot</span>
+              <span class="mono text-[10.5px] tracking-[0.16em] uppercase flex items-center gap-1.5 shrink-0" style="color: #34d399;">
+                <span class="w-1.5 h-1.5 rounded-full" style="background: #34d399; box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.18);"></span>live
+              </span>
+            </div>
+            <a href="https://t.me/byer_deals_bot" target="_blank" rel="noopener" class="self-center transition-transform duration-150 hover:-translate-y-0.5" title="Scan to open the Byer bot on Telegram">
+              <span class="relative block h-48 w-48 md:h-56 md:w-56" style="color: #60a5fa; filter: drop-shadow(0 12px 44px rgba(96, 165, 250, 0.35));">
                 <svg viewBox="0 0 37 37" class="block h-full w-full" shape-rendering="crispEdges" aria-label="Scan to open the Byer bot on Telegram" role="img">
                   <path stroke="currentColor" d="M4 4.5h7m1 0h3m2 0h3m1 0h1m4 0h7M4 5.5h1m5 0h1m3 0h2m3 0h1m1 0h1m4 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h2m1 0h3m3 0h1m1 0h1m2 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m8 0h2m1 0h2m2 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m2 0h1m2 0h1m2 0h2m5 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h4m1 0h2m1 0h3m1 0h1m1 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M13 11.5h1m1 0h1m1 0h1m4 0h1M4 12.5h1m1 0h1m3 0h2m2 0h1m1 0h2m1 0h2m2 0h2m2 0h1m2 0h1m1 0h1M4 13.5h1m2 0h2m2 0h1m2 0h3m3 0h1m2 0h2m1 0h1m4 0h2M4 14.5h4m1 0h5m2 0h3m1 0h1m1 0h2m4 0h3m1 0h1M7 15.5h3m3 0h3m2 0h3m3 0h4m1 0h1M8 16.5h1m1 0h1m1 0h3m1 0h3m4 0h2m1 0h2m4 0h1M4 17.5h2m3 0h1m1 0h2m2 0h1m1 0h2m2 0h1m1 0h2m1 0h2m3 0h2M6 18.5h5m1 0h2m1 0h2m2 0h1m3 0h4m1 0h1m3 0h1M5 19.5h2m2 0h1m1 0h1m1 0h1m1 0h3m4 0h1m1 0h1m1 0h3M4 20.5h3m1 0h1m1 0h1m3 0h1m1 0h2m1 0h2m2 0h2m1 0h2m4 0h1M6 21.5h1m2 0h1m3 0h1m1 0h2m3 0h1m1 0h6m2 0h3M4 22.5h8m1 0h6m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1M8 23.5h1m6 0h1m2 0h3m2 0h3m1 0h2M4 24.5h4m2 0h2m5 0h2m2 0h2m1 0h6m1 0h1M12 25.5h1m1 0h1m2 0h2m2 0h1m1 0h2m3 0h3m1 0h1M4 26.5h7m1 0h2m1 0h1m3 0h1m3 0h2m1 0h1m1 0h1m3 0h1M4 27.5h1m5 0h1m3 0h1m2 0h1m3 0h1m1 0h2m3 0h1m2 0h2M4 28.5h1m1 0h3m1 0h1m2 0h1m3 0h1m1 0h3m1 0h7m1 0h1M4 29.5h1m1 0h3m1 0h1m2 0h1m1 0h1m4 0h1m3 0h2m2 0h4M4 30.5h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h2m1 0h6m1 0h2m2 0h2M4 31.5h1m5 0h1m3 0h1m1 0h2m1 0h2m1 0h4m3 0h1M4 32.5h7m1 0h2m1 0h2m1 0h1m2 0h2m1 0h1m1 0h1m1 0h1m3 0h1"/>
                 </svg>
@@ -300,9 +328,118 @@
                 </span>
               </span>
             </a>
-            <a href="https://t.me/byer_deals_bot" target="_blank" rel="noopener" class="btn-primary text-sm md:text-base font-medium text-white rounded-full px-6 py-3">Join the Telegram Channel →</a>
-            <p class="text-xs text-white/45">Closes soon · Early access gets 50 deals per day</p>
+            <p class="text-center text-xs text-white/50">scan to open the channel</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECENT DROPS -->
+    <section id="drops" class="max-w-6xl mx-auto px-6 md:px-8 pb-16 md:pb-20">
+      <div class="flex items-end justify-between flex-wrap gap-3 mb-6">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">
+            Recent drops <span class="text-white/35 font-normal text-lg md:text-xl">— last 24h</span>
+          </h2>
+          <p class="text-sm text-white/55 mt-2">A peek at what distributors posted inside the channel.</p>
+        </div>
+        <span class="mono text-[11px] uppercase tracking-[0.16em] flex items-center gap-1.5" style="color: #34d399;">
+          <span class="w-1.5 h-1.5 rounded-full" style="background: #34d399; box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.18);"></span>live
+        </span>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
+        <div class="card p-4 flex flex-col gap-2 min-h-[118px]">
+          <div class="text-sm font-semibold text-white">Creed</div>
+          <div class="mono text-[11px] text-white/55 leading-snug">Aventus EDP 100ml</div>
+          <div class="mt-auto mono text-xs" style="color: #34d399;">67% off</div>
+        </div>
+        <div class="card p-4 flex flex-col gap-2 min-h-[118px]">
+          <div class="text-sm font-semibold text-white">Sony</div>
+          <div class="mono text-[11px] text-white/55 leading-snug">WH-1000XM5</div>
+          <div class="mt-auto mono text-xs" style="color: #34d399;">46% off</div>
+        </div>
+        <div class="card p-4 flex flex-col gap-2 min-h-[118px]">
+          <div class="text-sm font-semibold text-white">Laneige</div>
+          <div class="mono text-[11px] text-white/55 leading-snug">Lip Sleeping Mask</div>
+          <div class="mt-auto mono text-xs" style="color: #34d399;">65% off</div>
+        </div>
+        <div class="card p-4 flex flex-col gap-2 min-h-[118px]">
+          <div class="text-sm font-semibold text-white">Apple</div>
+          <div class="mono text-[11px] text-white/55 leading-snug">AirPods Pro 2</div>
+          <div class="mt-auto mono text-xs" style="color: #34d399;">34% off</div>
+        </div>
+        <div class="card p-4 flex flex-col gap-2 min-h-[118px]">
+          <div class="text-sm font-semibold text-white">Carhartt WIP</div>
+          <div class="mono text-[11px] text-white/55 leading-snug">Chore Coat FW24</div>
+          <div class="mt-auto mono text-xs" style="color: #34d399;">73% off</div>
+        </div>
+        <div class="card p-4 flex flex-col gap-2 min-h-[118px]">
+          <div class="text-sm font-semibold text-white">Dyson</div>
+          <div class="mono text-[11px] text-white/55 leading-snug">V15 Detect</div>
+          <div class="mt-auto mono text-xs" style="color: #34d399;">60% off</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUPPLIER FEED -->
+    <section id="suppliers" class="max-w-6xl mx-auto px-6 md:px-8 pb-20 md:pb-24">
+      <div class="flex items-end justify-between flex-wrap gap-3 mb-6">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">
+            Who's dropping <span class="text-white/35 font-normal text-lg md:text-xl">— vetted suppliers</span>
+          </h2>
+          <p class="text-sm text-white/55 mt-2">Distributors we've sourced and vetted directly. Fresh posts first.</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4">
+        <!-- Laneige US distrib -->
+        <div class="card p-5 flex flex-col gap-4">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex items-center gap-3 min-w-0">
+              <span class="w-9 h-9 rounded-full flex items-center justify-center text-[11px] font-semibold shrink-0" style="background: #f9a8d4; color: #1a1a1f;">LN</span>
+              <div class="flex flex-col min-w-0">
+                <span class="text-sm font-semibold text-white truncate">Laneige · US distrib</span>
+                <span class="mono text-[11px] text-white/45 truncate">@ln_wholesale_us</span>
+              </div>
+            </div>
+            <span class="mono text-[11px] text-white/40 shrink-0">3 min</span>
+          </div>
+          <span class="mono text-[10.5px] uppercase tracking-[0.14em] flex items-center gap-1.5 self-start" style="color: #34d399;">
+            <span class="w-1.5 h-1.5 rounded-full" style="background: #34d399;"></span>fresh drop
+          </span>
+          <p class="text-sm text-white/75 leading-relaxed">Lip Sleeping Mask 20g — 1,800 units sealed, 65% off retail. Reserve by EOD.</p>
+        </div>
+        <!-- Meridian Vault -->
+        <div class="card p-5 flex flex-col gap-4">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex items-center gap-3 min-w-0">
+              <span class="w-9 h-9 rounded-full flex items-center justify-center text-[11px] font-semibold shrink-0" style="background: #fcd34d; color: #1a1a1f;">MV</span>
+              <div class="flex flex-col min-w-0">
+                <span class="text-sm font-semibold text-white truncate">Meridian Vault</span>
+                <span class="mono text-[11px] text-white/45 truncate">@mv_parfum</span>
+              </div>
+            </div>
+            <span class="mono text-[11px] text-white/40 shrink-0">12 min</span>
+          </div>
+          <span class="mono text-[10.5px] uppercase tracking-[0.14em] text-white/55 self-start">preview</span>
+          <p class="text-sm text-white/75 leading-relaxed">Creed Aventus 100ml EDP — sealed, 900 units, 67% off. First come first served.</p>
+        </div>
+        <!-- Nexus Supply -->
+        <div class="card p-5 flex flex-col gap-4">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex items-center gap-3 min-w-0">
+              <span class="w-9 h-9 rounded-full flex items-center justify-center text-[11px] font-semibold shrink-0" style="background: #93c5fd; color: #1a1a1f;">NX</span>
+              <div class="flex flex-col min-w-0">
+                <span class="text-sm font-semibold text-white truncate">Nexus Supply</span>
+                <span class="mono text-[11px] text-white/45 truncate">@nexus_ce</span>
+              </div>
+            </div>
+            <span class="mono text-[11px] text-white/40 shrink-0">28 min</span>
+          </div>
+          <span class="mono text-[10.5px] uppercase tracking-[0.14em] flex items-center gap-1.5 self-start" style="color: #60a5fa;">
+            <span class="w-1.5 h-1.5 rounded-full" style="background: #60a5fa;"></span>restock
+          </span>
+          <p class="text-sm text-white/75 leading-relaxed">Sony WH-1000XM5 in black & silver — 2,400 units, 46% off. Two-day reserve window.</p>
         </div>
       </div>
     </section>
@@ -311,8 +448,8 @@
     <section id="how" class="max-w-6xl mx-auto px-6 md:px-8 py-20 md:py-24">
       <div class="flex flex-col items-center text-center gap-4 mb-14">
         <span class="tag mono">how it works</span>
-        <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">A private Telegram channel for wholesale deals.</h2>
-        <p class="text-white/60 max-w-2xl">Tell us what you sell. We deliver deals that fit — straight to chat.</p>
+        <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">How the conversation flows.</h2>
+        <p class="text-white/60 max-w-2xl">Onboard once. Drops arrive when they fit your book. You reserve in chat.</p>
       </div>
 
       <!-- Sample deal drops -->
