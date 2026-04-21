@@ -35,6 +35,14 @@
         border: 1px solid var(--line);
         border-radius: 20px;
       }
+      .card-gradient {
+        background:
+          radial-gradient(120% 70% at 50% 0%, rgba(59,130,246,0.07), rgba(255,255,255,0) 55%),
+          linear-gradient(180deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.015) 100%);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+      }
+      .nav-divider { border-bottom: 1px solid var(--line); }
       .btn-primary {
         background: #1d4ed8;
         box-shadow: 0 10px 40px -12px rgba(59, 130, 246, 0.7);
@@ -263,37 +271,43 @@
   </head>
   <body class="min-h-screen">
     <!-- NAV -->
-    <nav class="max-w-6xl mx-auto px-6 md:px-8 py-6 flex items-center justify-between relative gap-4">
-      <div class="flex items-center gap-3 min-w-0">
-        <a href="#" class="flex items-center shrink-0">
-          <img src="byer-logo.png" alt="Byer.ai" class="h-11 md:h-14 w-auto" />
-        </a>
-        <span class="hidden md:inline text-white/20 select-none">/</span>
-        <span class="hidden md:inline-flex mono text-[11px] text-white/55 items-center gap-1.5 whitespace-nowrap">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400" style="box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.15);"></span>
-          channel open · cohort 04
-        </span>
-      </div>
-      <a href="#" class="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-xl md:text-2xl font-bold tracking-tight text-white hover:text-white">byer.ai</a>
-      <div class="flex items-center gap-3 shrink-0">
-        <a href="#drops" class="hidden md:inline text-sm text-white/70 hover:text-white">Drops</a>
-        <a href="#how" class="hidden md:inline text-sm text-white/70 hover:text-white">How it works</a>
-        <a href="#faq" class="hidden md:inline text-sm text-white/70 hover:text-white">FAQ</a>
-        <a href="#" data-open-modal class="btn-primary text-sm font-medium text-white rounded-full px-4 py-2 whitespace-nowrap">WhatsApp waitlist</a>
-      </div>
-    </nav>
+    <div class="nav-divider">
+      <nav class="max-w-6xl mx-auto px-6 md:px-8 py-5 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3 min-w-0">
+          <a href="#" class="flex items-center gap-2 shrink-0 text-white">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-[18px] w-[18px] md:h-5 md:w-5" style="color: #60a5fa;" aria-hidden="true">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+              <line x1="12" y1="22.08" x2="12" y2="12"/>
+            </svg>
+            <span class="text-lg md:text-xl font-bold tracking-tight">byer.ai</span>
+          </a>
+          <span class="hidden md:inline text-white/20 select-none">/</span>
+          <span class="hidden md:inline-flex mono text-[11px] text-white/55 items-center gap-1.5 whitespace-nowrap">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400" style="box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.15);"></span>
+            channel open · cohort 04
+          </span>
+        </div>
+        <div class="flex items-center gap-3 shrink-0">
+          <a href="#drops" class="hidden md:inline text-sm text-white/70 hover:text-white">Drops</a>
+          <a href="#how" class="hidden md:inline text-sm text-white/70 hover:text-white">How it works</a>
+          <a href="#faq" class="hidden md:inline text-sm text-white/70 hover:text-white">FAQ</a>
+          <a href="#" data-open-modal class="btn-primary text-sm font-medium text-white rounded-full px-4 py-2 whitespace-nowrap">WhatsApp waitlist</a>
+        </div>
+      </nav>
+    </div>
 
     <!-- HERO -->
     <section class="hero-bg">
       <div class="max-w-6xl mx-auto px-6 md:px-8 pt-10 md:pt-16 pb-20 md:pb-24">
-        <div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+        <div class="grid md:grid-cols-2 gap-10 md:gap-14 items-start">
           <!-- Left: copy + CTA -->
           <div class="flex flex-col gap-6 md:gap-7">
             <span class="tag mono self-start">
               <span class="dot"></span>cohort 04
             </span>
             <h1 class="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-white">
-              Exclusive wholesale deals. Delivered on Telegram.
+              Exclusive <span style="color: #93c5fd;">wholesale deals</span>. Delivered on Telegram.
             </h1>
             <p class="text-white/70 max-w-xl text-base md:text-lg leading-relaxed">
               Byer is a private channel with exclusive pricing from distributors we source directly. Get in and you'll see deals that don't exist on broker chains, supplier broadcasts, or anywhere else. Current cohort is filling — limited spots.
@@ -305,28 +319,28 @@
           </div>
 
           <!-- Right: QR card -->
-          <div class="card p-6 md:p-7 flex flex-col gap-5">
+          <div class="card-gradient p-6 md:p-8 flex flex-col gap-5">
             <div class="flex items-center justify-between gap-4">
-              <span class="mono text-[11px] tracking-[0.12em] text-white/55 uppercase truncate">t.me/byer_deals_bot</span>
-              <span class="mono text-[10.5px] tracking-[0.16em] uppercase flex items-center gap-1.5 shrink-0" style="color: #34d399;">
+              <span class="mono text-[12px] md:text-[13px] tracking-[0.12em] text-white/60 uppercase truncate">t.me/byer_deals_bot</span>
+              <span class="mono text-[11.5px] md:text-[12px] tracking-[0.16em] uppercase flex items-center gap-1.5 shrink-0" style="color: #34d399;">
                 <span class="w-1.5 h-1.5 rounded-full" style="background: #34d399; box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.18);"></span>live
               </span>
             </div>
             <a href="https://t.me/byer_deals_bot" target="_blank" rel="noopener" class="self-center transition-transform duration-150 hover:-translate-y-0.5" title="Scan to open the Byer bot on Telegram">
-              <span class="relative block h-48 w-48 md:h-56 md:w-56" style="color: #ffffff;">
+              <span class="relative block h-48 w-48 md:h-52 md:w-52" style="color: #ffffff;">
                 <svg viewBox="0 0 37 37" class="block h-full w-full" shape-rendering="crispEdges" aria-label="Scan to open the Byer bot on Telegram" role="img">
                   <path stroke="currentColor" d="M4 4.5h7m1 0h3m2 0h3m1 0h1m4 0h7M4 5.5h1m5 0h1m3 0h2m3 0h1m1 0h1m4 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h2m1 0h3m3 0h1m1 0h1m2 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m8 0h2m1 0h2m2 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m2 0h1m2 0h1m2 0h2m5 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h4m1 0h2m1 0h3m1 0h1m1 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M13 11.5h1m1 0h1m1 0h1m4 0h1M4 12.5h1m1 0h1m3 0h2m2 0h1m1 0h2m1 0h2m2 0h2m2 0h1m2 0h1m1 0h1M4 13.5h1m2 0h2m2 0h1m2 0h3m3 0h1m2 0h2m1 0h1m4 0h2M4 14.5h4m1 0h5m2 0h3m1 0h1m1 0h2m4 0h3m1 0h1M7 15.5h3m3 0h3m2 0h3m3 0h4m1 0h1M8 16.5h1m1 0h1m1 0h3m1 0h3m4 0h2m1 0h2m4 0h1M4 17.5h2m3 0h1m1 0h2m2 0h1m1 0h2m2 0h1m1 0h2m1 0h2m3 0h2M6 18.5h5m1 0h2m1 0h2m2 0h1m3 0h4m1 0h1m3 0h1M5 19.5h2m2 0h1m1 0h1m1 0h1m1 0h3m4 0h1m1 0h1m1 0h3M4 20.5h3m1 0h1m1 0h1m3 0h1m1 0h2m1 0h2m2 0h2m1 0h2m4 0h1M6 21.5h1m2 0h1m3 0h1m1 0h2m3 0h1m1 0h6m2 0h3M4 22.5h8m1 0h6m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1M8 23.5h1m6 0h1m2 0h3m2 0h3m1 0h2M4 24.5h4m2 0h2m5 0h2m2 0h2m1 0h6m1 0h1M12 25.5h1m1 0h1m2 0h2m2 0h1m1 0h2m3 0h3m1 0h1M4 26.5h7m1 0h2m1 0h1m3 0h1m3 0h2m1 0h1m1 0h1m3 0h1M4 27.5h1m5 0h1m3 0h1m2 0h1m3 0h1m1 0h2m3 0h1m2 0h2M4 28.5h1m1 0h3m1 0h1m2 0h1m3 0h1m1 0h3m1 0h7m1 0h1M4 29.5h1m1 0h3m1 0h1m2 0h1m1 0h1m4 0h1m3 0h2m2 0h4M4 30.5h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h2m1 0h6m1 0h2m2 0h2M4 31.5h1m5 0h1m3 0h1m1 0h2m1 0h2m1 0h4m3 0h1M4 32.5h7m1 0h2m1 0h2m1 0h1m2 0h2m1 0h1m1 0h1m1 0h1m3 0h1"/>
                 </svg>
                 <span class="pointer-events-none absolute inset-0 flex items-center justify-center">
-                  <span class="flex items-center justify-center rounded-full" style="width: 40px; height: 40px; background: #08070c;">
-                    <svg viewBox="0 0 24 24" class="h-[18px] w-[18px]" fill="currentColor" aria-hidden="true">
+                  <span class="flex items-center justify-center rounded-full" style="width: 44px; height: 44px; background: #08070c;">
+                    <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
                       <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z"/>
                     </svg>
                   </span>
                 </span>
               </span>
             </a>
-            <p class="text-center text-xs text-white/50">scan to open the channel</p>
+            <p class="text-center text-sm text-white/55">scan to open the channel</p>
           </div>
         </div>
       </div>
@@ -393,7 +407,13 @@
       <div class="grid md:grid-cols-3 gap-5 mb-10">
         <div class="chat-mini">
           <div class="mini-header">
-            <img src="byer-logo.png" alt="Byer.ai" class="h-7 w-auto flex-shrink-0" />
+            <span class="mini-avatar" aria-label="Byer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                <line x1="12" y1="22.08" x2="12" y2="12"/>
+              </svg>
+            </span>
             <div class="flex-1 min-w-0">
               <div class="flex items-center">
                 <span class="platform tg"><span class="pdot"></span>Telegram</span>
@@ -406,7 +426,13 @@
         </div>
         <div class="chat-mini">
           <div class="mini-header">
-            <img src="byer-logo.png" alt="Byer.ai" class="h-7 w-auto flex-shrink-0" />
+            <span class="mini-avatar" aria-label="Byer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                <line x1="12" y1="22.08" x2="12" y2="12"/>
+              </svg>
+            </span>
             <div class="flex-1 min-w-0">
               <div class="flex items-center">
                 <span class="platform tg"><span class="pdot"></span>Telegram</span>
@@ -420,7 +446,13 @@
         </div>
         <div class="chat-mini">
           <div class="mini-header">
-            <img src="byer-logo.png" alt="Byer.ai" class="h-7 w-auto flex-shrink-0" />
+            <span class="mini-avatar" aria-label="Byer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                <line x1="12" y1="22.08" x2="12" y2="12"/>
+              </svg>
+            </span>
             <div class="flex-1 min-w-0">
               <div class="flex items-center">
                 <span class="platform tg"><span class="pdot"></span>Telegram</span>
